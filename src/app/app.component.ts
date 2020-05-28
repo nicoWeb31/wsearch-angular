@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WikiService } from './wiki.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  pages = [];
+
+  constructor(
+    private wikiServ: WikiService
+  ){}
+
   title = 'wsearch';
+
+  onTherm(term: string){
+    this.wikiServ.search(term).subscribe((response :any)=>{
+        console.log(response)
+        this.pages = response.query.search;
+    })
+  }
+
 }

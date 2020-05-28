@@ -1,0 +1,21 @@
+<table class="table is-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Word count</th>
+      <th>Snippet </th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <tr *ngFor="let line of data">
+
+        <td>{{line.title}}</td>
+        <td>{{line.wordcount}}</td>
+        <td>{{line.snippet}}</td>
+
+
+      </tr>
+    </tbody>
+
+</table>
