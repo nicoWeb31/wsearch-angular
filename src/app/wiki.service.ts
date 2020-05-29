@@ -1,5 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+import { pluck } from 'rxjs/operators';
+
+interface WikiResponse {
+  query :{
+    search: {
+      title:string;
+      snippet: string;
+      pageid: number;
+    }[];
+  };
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +21,7 @@ export class WikiService {
   constructor(private httpCli: HttpClient) { }
 
   search(term: string){
-   return this.httpCli.get('https://en.wikipedia.org/w/api.php',{
+   return this.httpCli.get<WikiResponse>('https://en.wikipedia.org/w/api.php',{
      params:{
        action:'query',
        format:'json',
@@ -20,6 +32,7 @@ export class WikiService {
 
      }
    })
+   .pipe(pluck('query','search'))
   }
 
 }

@@ -18,9 +18,10 @@ export class AppComponent {
   title = 'wsearch';
 
   onTherm(term: string){
-    this.wikiServ.search(term).subscribe((response :any)=>{
+
+    this.wikiServ.search(term).subscribe((response)=>{
         console.log(response)
-        this.pages = response.query.search;
+        this.pages = response;
     })
   }
 
