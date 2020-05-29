@@ -1,3 +1,8 @@
-<app-search-bar (submitted)="onTherm($event)"></app-search-bar>
 
-<app-page-list [data] = "pages"></app-page-list>
+<div class="container">
+
+  <app-search-bar (submitted)="onTherm($event)"></app-search-bar>
+
+  <app-page-list [data] = "pages" *ngIf="pages.length"></app-page-list>
+
+</div>

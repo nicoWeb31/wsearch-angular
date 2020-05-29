@@ -10,9 +10,15 @@
     <tbody>
       <tr *ngFor="let line of data">
 
-        <td>{{line.title}}</td>
+        <td>
+          <a
+          target="_blank"
+          [href]=" 'https://en.wikipedia.org?curid=' + line.pageid "
+          > {{line.title}}</a>
+
+        </td>
         <td>{{line.wordcount}}</td>
-        <td>{{line.snippet}}</td>
+        <td [innerHTML] ="line.snippet"></td>
 
 
       </tr>
